@@ -41,9 +41,23 @@ imdb2 <- imdb1 %>%
             se = sd/sqrt(n))
 View(imdb2)
 
-p1 <- ggplot(imdb2, aes(x = genero, y = med)) +
+p1 <- ggplot(imdb2, aes(x = fct_reorder(genero, med), y = med)) +
   geom_col(fill = "#7fc97f", color = "black") +
   geom_errorbar(aes(x = genero, y = med, ymin = med - se,
-                    ymax = med + se), width = 0.3, size = 0.9) +
+                    ymax = med + se), width = 0.2, size = 0.9) +
   labs(x = "Gêneros", y = "Notas IMDB")
 p1
+
+imdb3 <- imdb1 %>%
+  group_by(genero) %>%
+  summarise(med = mean(duracao),
+            sd = sd(duracao),n = n(),
+            se = sd/sqrt(n))
+View(imdb3)
+
+p2 <- ggplot(imdb3, aes(x = fct_reorder(genero, med), y = med)) +
+  geom_col(fill = "#7fc97f", color = "black") +
+  geom_errorbar(aes(x = genero, y = med, ymin = med - se,
+                    ymax = med + se), width = 0.2, size = 0.9) +
+  labs(x = "Gêneros", y = "Duração dos filmes")
+p2
