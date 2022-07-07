@@ -61,3 +61,31 @@ p2 <- ggplot(imdb3, aes(x = fct_reorder(genero, med), y = med)) +
                     ymax = med + se), width = 0.2, size = 0.9) +
   labs(x = "Gêneros", y = "Duração dos filmes")
 p2
+
+imdb4 <- imdb1 %>%
+  group_by(pais) %>%
+  summarise(med = mean(nota_imdb),
+            sd = sd(nota_imdb),n = n(),
+            se = sd/sqrt(n))
+View(imdb4)
+
+p3 <- ggplot(imdb4, aes(x = fct_reorder(pais, med), y = med)) +
+  geom_col(fill = "#7fc97f", color = "black") +
+  geom_errorbar(aes(x = pais, y = med, ymin = med - se,
+                    ymax = med + se), width = 0.2, size = 0.9) +
+  labs(x = "Países", y = "Notas IMDB")
+p3
+
+imdb5 <- imdb1 %>%
+  group_by(pais) %>%
+  summarise(med = mean(duracao),
+            sd = sd(duracao),n = n(),
+            se = sd/sqrt(n))
+View(imdb5)
+
+p4 <- ggplot(imdb5, aes(x = fct_reorder(pais, med), y = med)) +
+  geom_col(fill = "#7fc97f", color = "black") +
+  geom_errorbar(aes(x = pais, y = med, ymin = med - se,
+                    ymax = med + se), width = 0.2, size = 0.9) +
+  labs(x = "Países", y = "Duração dos filmes")
+p4
