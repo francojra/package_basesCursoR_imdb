@@ -92,6 +92,13 @@ p4 <- ggplot(imdb5, aes(x = fct_reorder(pais, med), y = med)) +
   labs(x = "Países", y = "Duração dos filmes")
 p4
 
+imdb1$ano <- factor(imdb1$ano,
+                       levels = c("1914",
+                                  "1949",
+                                  "1976",
+                                  "1980",
+                                  "2004"))
+
 imdb5 <- imdb1 %>%
   group_by(ano) %>%
   summarise(med = mean(nota_imdb),
@@ -113,9 +120,9 @@ imdb6 <- imdb1 %>%
             se = sd/sqrt(n))
 View(imdb6)
 
-p4 <- ggplot(imdb5, aes(x = fct_reorder(pais, med), y = med)) +
+p6 <- ggplot(imdb5, aes(x = fct_reorder(pais, med), y = med)) +
   geom_col(fill = "#7fc97f", color = "black") +
   geom_errorbar(aes(x = pais, y = med, ymin = med - se,
                     ymax = med + se), width = 0.2, size = 0.9) +
   labs(x = "Países", y = "Duração dos filmes")
-p4
+p6
