@@ -58,7 +58,7 @@ imdb3 <- imdb1 %>%
 View(imdb3)
 
 p2 <- ggplot(imdb3, aes(x = fct_reorder(genero, med), y = med)) +
-  geom_col(fill = "#7fc97f", color = "black") +
+  geom_col(fill = "#beaed4", color = "black") +
   geom_errorbar(aes(x = genero, y = med, ymin = med - se,
                     ymax = med + se), width = 0.2, size = 0.9) +
   labs(x = "Gêneros", y = "Duração dos filmes")
@@ -72,7 +72,7 @@ imdb4 <- imdb1 %>%
 View(imdb4)
 
 p3 <- ggplot(imdb4, aes(x = fct_reorder(pais, med), y = med)) +
-  geom_col(fill = "#7fc97f", color = "black") +
+  geom_col(fill = "#fdc086", color = "black") +
   geom_errorbar(aes(x = pais, y = med, ymin = med - se,
                     ymax = med + se), width = 0.2, size = 0.9) +
   labs(x = "Países", y = "Notas IMDB")
@@ -86,7 +86,7 @@ imdb5 <- imdb1 %>%
 View(imdb5)
 
 p4 <- ggplot(imdb5, aes(x = fct_reorder(pais, med), y = med)) +
-  geom_col(fill = "#7fc97f", color = "black") +
+  geom_col(fill = "#ffff99", color = "black") +
   geom_errorbar(aes(x = pais, y = med, ymin = med - se,
                     ymax = med + se), width = 0.2, size = 0.9) +
   labs(x = "Países", y = "Duração dos filmes")
@@ -107,7 +107,7 @@ imdb5 <- imdb1 %>%
 View(imdb5)
 
 p5 <- ggplot(imdb5, aes(x = ano, y = med)) +
-  geom_col(fill = "#7fc97f", color = "black") +
+  geom_col(fill = "#386cb0", color = "black") +
   geom_errorbar(aes(x = ano, y = med, ymin = med - se,
                     ymax = med + se), width = 0.2, size = 0.9) +
   labs(x = "Ano", y = "Notas IMDB")
@@ -121,8 +121,10 @@ imdb6 <- imdb1 %>%
 View(imdb6)
 
 p6 <- ggplot(imdb6, aes(x = ano, y = med)) +
-  geom_col(fill = "#7fc97f", color = "black") +
+  geom_col(fill = "#f0027f", color = "black") +
   geom_errorbar(aes(x = ano, y = med, ymin = med - se,
                     ymax = med + se), width = 0.2, size = 0.9) +
   labs(x = "Ano", y = "Duração dos filmes")
 p6
+
+grid.arrange(p1, p2, p3, p4, p5, p6)
