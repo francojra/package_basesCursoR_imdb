@@ -99,11 +99,11 @@ imdb5 <- imdb1 %>%
             se = sd/sqrt(n))
 View(imdb5)
 
-p5 <- ggplot(imdb4, aes(x = fct_reorder(pais, med), y = med)) +
+p5 <- ggplot(imdb5, aes(x = ano, y = med)) +
   geom_col(fill = "#7fc97f", color = "black") +
-  geom_errorbar(aes(x = pais, y = med, ymin = med - se,
+  geom_errorbar(aes(x = ano, y = med, ymin = med - se,
                     ymax = med + se), width = 0.2, size = 0.9) +
-  labs(x = "Países", y = "Notas IMDB")
+  labs(x = "Ano", y = "Notas IMDB")
 p5
 
 imdb6 <- imdb1 %>%
