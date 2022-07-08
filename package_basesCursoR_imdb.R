@@ -120,9 +120,9 @@ imdb6 <- imdb1 %>%
             se = sd/sqrt(n))
 View(imdb6)
 
-p6 <- ggplot(imdb5, aes(x = fct_reorder(pais, med), y = med)) +
+p6 <- ggplot(imdb6, aes(x = ano, y = med)) +
   geom_col(fill = "#7fc97f", color = "black") +
-  geom_errorbar(aes(x = pais, y = med, ymin = med - se,
+  geom_errorbar(aes(x = ano, y = med, ymin = med - se,
                     ymax = med + se), width = 0.2, size = 0.9) +
-  labs(x = "Países", y = "Duração dos filmes")
+  labs(x = "Ano", y = "Duração dos filmes")
 p6
